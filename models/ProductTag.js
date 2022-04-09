@@ -25,7 +25,7 @@ ProductTag.init(
         model: "product", 
         key: "id"
       }
-
+    }
   },
   {
     sequelize,

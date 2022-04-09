@@ -16,18 +16,44 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
+  Category.findAll({
+    where:{id:req.params.id},
+    include: [Product]
+  }).then(() => {
+    res.json(bookData);
+  });
 });
 
 router.post('/', (req, res) => {
   // create a new category
+  Category.create(
+    req.body
+  ).then(() => {
+    res.json(bookData);
+  });
 });
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(req.body,{
+    where:{id:req.params.id},
+    
+  }).then(() => {
+    res.json(bookData);
+  });
 });
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((deletedCategory) => {
+      res.json(deletedCategory);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;
