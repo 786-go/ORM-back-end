@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   Category.find({
-    where:{id:req.params.id},
+    where: { id: req.params.id },
     include: [Product]
   }).then(() => {
     res.json(bookData);
@@ -35,9 +35,8 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update(req.body,{
-    where:{id:req.params.id},
-    
+  Category.update(req.body, {
+    where: { id: req.params.id },
   }).then(() => {
     res.json(bookData);
   });
