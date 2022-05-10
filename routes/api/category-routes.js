@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
   // be sure to include its associated Products
   Category.findAll({
     include: [Product]
-  }).then(() => {
-    res.json(bookData);
+  }).then((categoryData) => {
+    res.json(categoryData);
   });
 });
 
@@ -19,8 +19,8 @@ router.get('/:id', (req, res) => {
   Category.find({
     where: { id: req.params.id },
     include: [Product]
-  }).then(() => {
-    res.json(bookData);
+  }).then((categoryData) => {
+    res.json(categoryData);
   });
 });
 
@@ -28,8 +28,8 @@ router.post('/', (req, res) => {
   // create a new category
   Category.create(
     req.body
-  ).then(() => {
-    res.json(bookData);
+  ).then((categoryData) => {
+    res.json(categoryData);
   });
 });
 
@@ -37,8 +37,8 @@ router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(req.body, {
     where: { id: req.params.id },
-  }).then(() => {
-    res.json(bookData);
+  }).then((categoryData) => {
+    res.json(categoryData);
   });
 });
 
